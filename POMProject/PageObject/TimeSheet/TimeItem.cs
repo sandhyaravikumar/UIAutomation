@@ -16,8 +16,6 @@ namespace POMProject.PageObjects
             PageFactory.InitElements(driver, this);
         }
 
-
-
         [FindsBy(How = How.Name, Using = "timeitem[project_id]")]
         private IWebElement selectProject;
 
@@ -37,7 +35,6 @@ namespace POMProject.PageObjects
         private IWebElement friday;
 
         [FindsBy(How = How.Name, Using = "commit")]
-
         private IWebElement createTimeItem;
 
         private void SetProject(String option)

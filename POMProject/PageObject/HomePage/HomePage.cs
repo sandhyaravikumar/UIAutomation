@@ -18,9 +18,6 @@ namespace POMProject.PageObjects
         [FindsBy(How = How.XPath, Using = "/html/body/div/div[1]/h1")]
         private IWebElement username;
 
-        [FindsBy(How = How.XPath, Using = "//a[@href='/aways']")]
-        private IWebElement leavePage;
-
         [FindsBy(How = How.XPath, Using = "//a[@href='/timesheets']")]
         private IWebElement timeSheetPage;
 
@@ -31,7 +28,6 @@ namespace POMProject.PageObjects
         {
             return username.Text;
         }
-
 
         public TimeSheetPage GoToTimeSheetPage()
         {
@@ -44,7 +40,6 @@ namespace POMProject.PageObjects
         {
             logout.Click();
         }
-
 
     }
 }

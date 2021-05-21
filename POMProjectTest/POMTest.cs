@@ -13,7 +13,9 @@ namespace POMProjectTest
         [SetUp]
         public void Setup()
         {
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("-headless");
+            driver = new ChromeDriver(options);
         }
 
         [Test]
@@ -22,8 +24,10 @@ namespace POMProjectTest
             LoginPage loginpage = new LoginPage(driver);
             loginpage.GoToPage();
             HomePage home = loginpage.Login("sandhyar@testvagrant.com", "password");
+
             string username = home.GetUserNamefromHomePage();
             Assert.AreEqual("Sandhya Ravikumar", username);
+
             home.Logout();
 
         }
@@ -59,14 +63,12 @@ namespace POMProjectTest
             Assert.AreEqual("Sandhya Ravikumar", username);
 
             TimeSheetPage timeSheetPage = home.GoToTimeSheetPage();
-            TimeSheet modifyTimeSheet = timeSheetPage.ModifyTimeSheet("24 May, 2021");
+            TimeSheet modifyTimeSheet = timeSheetPage.ModifyTimeSheet("17 May, 2021");
             TimeItem timeItem = modifyTimeSheet.ModifyTimeForExistingTimeSheet();
             timeItem.SetTime("Beach", "8");
             modifyTimeSheet.Submit();
 
             home.Logout();
-
-
         }
 
 

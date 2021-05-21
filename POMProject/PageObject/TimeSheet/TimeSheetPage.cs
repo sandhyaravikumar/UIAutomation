@@ -16,10 +16,8 @@ namespace POMProject.PageObjects
         }
 
         [FindsBy(How = How.XPath, Using = "//a[@href='/timesheets/new']")]
-
         private IWebElement createTimesheet;
 
-        [FindsByAll]
         [FindsBy(How = How.XPath, Using = "/html/body/div/div[2]/table")]
         private IWebElement weektable;
         
