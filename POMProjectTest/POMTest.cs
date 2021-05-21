@@ -38,13 +38,35 @@ namespace POMProjectTest
             Assert.AreEqual("Sandhya Ravikumar", username);
 
             TimeSheetPage timeSheetPage = home.GoToTimeSheetPage();
-            CreateNewTimeSheet newTimeSheet = timeSheetPage.CreateNewTimeSheet();
+            TimeSheet newTimeSheet = timeSheetPage.CreateNewTimeSheet();
 
-            TimeItem timeItem = newTimeSheet.CreateNewTimesheet("07 June, 2021");
+            TimeItem timeItem = newTimeSheet.CreateNewTimesheet("14 June, 2021");
             timeItem.SetTime("Beach", "8");
             newTimeSheet.Submit();
 
             home.Logout();
+        }
+
+
+        [Test]
+        public void ModifyTimeForExistingTimeSheet()
+        {
+            LoginPage loginpage = new LoginPage(driver);
+            loginpage.GoToPage();
+
+            HomePage home = loginpage.Login("sandhyar@testvagrant.com", "password");
+            string username = home.GetUserNamefromHomePage();
+            Assert.AreEqual("Sandhya Ravikumar", username);
+
+            TimeSheetPage timeSheetPage = home.GoToTimeSheetPage();
+            TimeSheet modifyTimeSheet = timeSheetPage.ModifyTimeSheet("24 May, 2021");
+            TimeItem timeItem = modifyTimeSheet.ModifyTimeForExistingTimeSheet();
+            timeItem.SetTime("Beach", "8");
+            modifyTimeSheet.Submit();
+
+            home.Logout();
+
+
         }
 
 

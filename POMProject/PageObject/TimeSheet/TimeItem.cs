@@ -79,11 +79,7 @@ namespace POMProject.PageObjects
             this.SetThursdayWorkingHours(time);
             this.SetFridayWorkingHours(time);
             createTimeItem.Click();
-
-
         }
-
-
 
     }
 }

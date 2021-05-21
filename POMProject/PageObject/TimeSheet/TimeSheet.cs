@@ -7,11 +7,11 @@ using System.Collections.Generic;
 
 namespace POMProject.PageObjects
 {
-    public class CreateNewTimeSheet
+    public class TimeSheet
     {
         private IWebDriver driver;
 
-        public CreateNewTimeSheet(IWebDriver driver)
+        public TimeSheet(IWebDriver driver)
         {
             this.driver = driver;
             PageFactory.InitElements(driver, this);
@@ -40,6 +40,11 @@ namespace POMProject.PageObjects
         {
             this.SetWeek(week);
             createTimesheet.Click();
+            newTimeItem.Click();
+            return new TimeItem(driver);
+        }
+
+        public TimeItem ModifyTimeForExistingTimeSheet(){
             newTimeItem.Click();
             return new TimeItem(driver);
         }

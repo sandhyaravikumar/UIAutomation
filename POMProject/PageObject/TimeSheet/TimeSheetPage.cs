@@ -19,10 +19,20 @@ namespace POMProject.PageObjects
 
         private IWebElement createTimesheet;
 
-        public CreateNewTimeSheet CreateNewTimeSheet()
+        [FindsByAll]
+        [FindsBy(How = How.XPath, Using = "/html/body/div/div[2]/table")]
+        private IWebElement weektable;
+        
+        public TimeSheet CreateNewTimeSheet()
         {
             createTimesheet.Click();
-            return new CreateNewTimeSheet(driver);
+            return new TimeSheet(driver);
+        }
+
+        public TimeSheet ModifyTimeSheet(string date)
+        {
+            weektable.FindElement(By.LinkText(date)).Click();
+            return new TimeSheet(driver);
         }
 
     }
